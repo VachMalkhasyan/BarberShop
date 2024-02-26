@@ -8,17 +8,18 @@ const Header = () => {
   const navigation = useNavigation();
 
   const handleProfilePress = () => {
-    navigation.navigate('Products'); // Navigate to Profile page
+    navigation.navigate('ProfilePage'); // Navigate to Profile page
   };
 
   return (
     <>
+
+    <TouchableOpacity style={styles.right} onPress={handleProfilePress}>
+              <Ionicons  style={styles.right} name="person-circle" size={30} color="black" />
+    </TouchableOpacity>
       <View style={styles.container}>
-          <TouchableOpacity style={styles.right} onPress={handleProfilePress}>
-                    <Ionicons  style={styles.right} name="person-circle" size={30} color="black" />
-          </TouchableOpacity>
-                    <Image style={styles.logo} source={require("../assets/barbershop-logo-free-vector.jpg")} />
-          </View>
+              <Image style={styles.logo} source={require("../assets/barbershop-logo-free-vector.jpg")} />
+     </View>
       <View style={styles.container2}>
         <View style={styles.iconContainer}>
           <Ionicons name="" size={100} color="black" />

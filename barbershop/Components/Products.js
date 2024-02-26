@@ -8,7 +8,6 @@ const products = [
   { id: 2, name: 'Hair Gel', price: '$10', image: require('../assets/product2.png') },
   { id: 3, name: 'Shampoo', price: '$15', image: require('../assets/product3.png') },
   { id: 4, name: 'Hair Dryer', price: '$30', image: require('../assets/product4.png') },
-  // Add more products as needed
 ];
 
 const Products = () => {

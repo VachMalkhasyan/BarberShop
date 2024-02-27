@@ -1,7 +1,10 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import SearchInput from  '../Utils/SearchInput.js';
+import { Card, Button, Icon } from '@rneui/themed';
+
 
 const products = [
   { id: 1, name: 'Shaver', price: '$20', image: require('../assets/product1.png') },
@@ -16,20 +19,37 @@ const Products = () => {
     console.log(`Buying ${product.name}`);
   };
 
+  const [searchText, setSearchText] = useState('');
+
+    const handleSearchChange = text => {
+      setSearchText(text);
+      // You can add additional logic here, such as filtering data based on the search text
+    };
+
   return (
     <>
-      <Text style={styles.productsName}> You can see all our products </Text>
+
+      <Text style={styles.productsName}> Barber Shop Products </Text>
+      <SearchInput
+                  placeholder="Search..."
+                  onChangeText={handleSearchChange}
+                  value={searchText}
+      />
       <View style={styles.container}>
         {products.map(product => (
-          <View key={product.id} style={styles.productItem}>
-            <Image source={product.image} style={styles.productImage} />
-            <Text style={styles.productName}>{product.name}</Text>
-            <Text style={styles.productPrice}>{product.price}</Text>
-            <TouchableOpacity style={styles.buyButton} onPress={() => handleBuy(product)}>
-              <Ionicons name="cart" size={20} color="white" />
-              <Text style={styles.buyButtonText}>Buy</Text>
-            </TouchableOpacity>
-          </View>
+        <Card key={product.image}>
+                  <Card.Divider />
+                  <Card.Image
+                    style={{ padding: 0 }}
+                    source={product.image}
+                  />
+                  <Text style={styles.productName}>{product.name}</Text>
+                  <Text style={styles.productPrice}>{product.price}</Text>
+                  <TouchableOpacity style={styles.buyButton} onPress={() => handleBuy(product)}>
+                    <Ionicons name="cart" size={20} color="white" />
+                    <Text style={styles.buyButtonText}>Buy</Text>
+                  </TouchableOpacity>
+                </Card>
         ))}
       </View>
     </>
@@ -38,8 +58,8 @@ const Products = () => {
 
 const styles = StyleSheet.create({
   productsName: {
-    textAlign: 'center',
-    marginTop: 10,
+    textAlign: 'left',
+    margin: 10,
     fontSize: 20,
     fontWeight: 'bold',
   },
@@ -51,18 +71,21 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     padding: 8,
     backgroundColor: '#fff',
-    borderWidth: 2,
-    borderColor: "#20232a",
+
   },
   productItem: {
     width: '40%', // Adjust width as needed
     margin: 15,
     alignItems: 'center',
+    borderWidth: 1,
+    borderColor: "#20232a",
+    padding: 10
   },
   productImage: {
     width: 150,
     height: 150,
-    borderRadius: 10,
+    borderRadius: 15,
+    padding: 20
   },
   productName: {
     marginTop: 10,

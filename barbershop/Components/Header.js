@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { View, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Image, TouchableOpacity,Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
@@ -13,40 +12,45 @@ const Header = () => {
 
   return (
     <>
-
-    <TouchableOpacity style={styles.right} onPress={handleProfilePress}>
-              <Ionicons  style={styles.right} name="person-circle" size={30} color="black" />
-    </TouchableOpacity>
-      <View style={styles.container}>
-              <Image style={styles.logo} source={require("../assets/barbershop-logo-free-vector.jpg")} />
-     </View>
-      <View style={styles.container2}>
-        <View style={styles.iconContainer}>
-          <Ionicons name="" size={100} color="black" />
-        </View>
-      </View>
+              <View style={styles.container1}>
+                  <TouchableOpacity style={styles.right} onPress={handleProfilePress}>
+                          <Ionicons  style={styles.right} name="person-circle" size={30} color="black" />
+                  </TouchableOpacity>
+                  <TouchableOpacity style={styles.right} onPress={handleProfilePress}>
+                          <Ionicons  style={styles.right} name="basket-outline" size={30} color="black" />
+                  </TouchableOpacity>
+              </View>
+              <View style={styles.container}>
+                      <Image style={styles.logo} source={require("../assets/barbers.png")} />
+                      <Text style={styles.title} >Barber Shop</Text>
+                      <Text  style={styles.subTitle} >Superior cuts. Straight shaves. Tailored hair.</Text>
+             </View>
     </>
   );
 };
 
 const styles = StyleSheet.create({
-  right:{
-  textAlign:'right',
-
-
-
-    },
   logo: {
     height: 100,
     width: 200,
-    resizeMode: 'contain', // Ensure logo fits within the container
+    resizeMode: 'contain',
   },
   container: {
-    backgroundColor: '#ffdc7b',
+    backgroundColor: '#F4E6D7',
     justifyContent: 'center',
     alignItems: 'center',
-    height: 200,
+    marginBottom:20,
+    padding:25,
   },
+  container1: {
+        flexDirection: 'row',
+        backgroundColor: '#F4E6D7',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        gap:10,
+        padding:10
+      },
+
   container2: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -61,6 +65,16 @@ const styles = StyleSheet.create({
     borderRadius: 75,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  title: {
+   fontSize: 20,
+   fontWeight: 'bold',
+   color:"#2a5d7c"
+
+  },
+  subTitle: {
+    fontSize: 16,
+    color:"#2A5D7C"
   },
 });
 

@@ -13,6 +13,7 @@ import ProfilePage from './Components/ProfilePage'
 import Settings from './Components/Settings'
 import Booking from './Components/Booking'
 import Swiper from './Utils/SwiperComponent'
+import Schedule from './Components/Schedule'
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -58,10 +59,11 @@ const HomeScreen = () => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Header />
-      <SwiperComponent />
+      <Schedule />
       <View style={styles.content}>
         <Products />
       </View>
+      <SwiperComponent />
       <Footer />
     </ScrollView>
   );

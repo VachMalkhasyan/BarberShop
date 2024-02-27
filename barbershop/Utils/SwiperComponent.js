@@ -11,7 +11,7 @@ export default SwiperComponent = () => {
       style={styles.wrapper}
     >
       <View style={styles.slide}>
-       <Image source={require("../assets/product1.png")}/>
+       <Image source={require("../assets/product1.png")} />
       </View>
       <View style={styles.slide}>
         <Image source={require("../assets/product2.png")} />
@@ -28,7 +28,9 @@ const styles = StyleSheet.create({
   slide: {
     height:300,
     alignItems: 'center',
-    backgroundColor: 'black',
+    borderRadius: 50,
+    backgroundColor: '#F4E6D7',
+    padding:30
   },
 });
 

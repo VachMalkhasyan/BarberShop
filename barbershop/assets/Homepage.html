@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<!-- saved from url=(0028)http://localhost:1337/admin/ -->
+<html lang="en" data-react-helmet="lang"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex"><meta name="referrer" content="same-origin"><title>Homepage</title><style>html,
+      body,
+      #strapi {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        -webkit-font-smoothing: antialiased;
+      }</style><script defer="defer" src="./Homepage_files/runtime~main.dc3264ae.js"></script><script defer="defer" src="./Homepage_files/main.7ccc87f0.js"></script><style>/*
+
+Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmail.com>
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #002b36;
+  color: #839496;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #586e75;
+}
+
+/* Solarized Green */
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-addition {
+  color: #859900;
+}
+
+/* Solarized Cyan */
+.hljs-number,
+.hljs-string,
+.hljs-meta .hljs-meta-string,
+.hljs-literal,
+.hljs-doctag,
+.hljs-regexp {
+  color: #2aa198;
+}
+
+/* Solarized Blue */
+.hljs-title,
+.hljs-section,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class {
+  color: #268bd2;
+}
+
+/* Solarized Yellow */
+.hljs-attribute,
+.hljs-attr,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-class .hljs-title,
+.hljs-type {
+  color: #b58900;
+}
+
+/* Solarized Orange */
+.hljs-symbol,
+.hljs-bullet,
+.hljs-subst,
+.hljs-meta,
+.hljs-meta .hljs-keyword,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-link {
+  color: #cb4b16;
+}
+
+/* Solarized Red */
+.hljs-built_in,
+.hljs-deletion {
+  color: #dc322f;
+}
+
+.hljs-formula {
+  background: #073642;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+</style><style>/*!
+ * Cropper.js v1.6.0
+ * https://fengyuanchen.github.io/cropperjs
+ *
+ * Copyright 2015-present Chen Fengyuan
+ * Released under the MIT license
+ *
+ * Date: 2023-08-26T08:14:25.104Z
+ */
+
+.cropper-container {
+  direction: ltr;
+  font-size: 0;
+  line-height: 0;
+  position: relative;
+  -ms-touch-action: none;
+      touch-action: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.cropper-container img {
+    backface-visibility: hidden;
+    display: block;
+    height: 100%;
+    image-orientation: 0deg;
+    max-height: none !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    min-width: 0 !important;
+    width: 100%;
+  }
+
+.cropper-wrap-box,
+.cropper-canvas,
+.cropper-drag-box,
+.cropper-crop-box,
+.cropper-modal {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.cropper-wrap-box,
+.cropper-canvas {
+  overflow: hidden;
+}
+
+.cropper-drag-box {
+  background-color: #fff;
+  opacity: 0;
+}
+
+.cropper-modal {
+  background-color: #000;
+  opacity: 0.5;
+}
+
+.cropper-view-box {
+  display: block;
+  height: 100%;
+  outline: 1px solid #39f;
+  outline-color: rgba(51, 153, 255, 75%);
+  overflow: hidden;
+  width: 100%;
+}
+
+.cropper-dashed {
+  border: 0 dashed #eee;
+  display: block;
+  opacity: 0.5;
+  position: absolute;
+}
+
+.cropper-dashed.dashed-h {
+    border-bottom-width: 1px;
+    border-top-width: 1px;
+    height: calc(100% / 3);
+    left: 0;
+    top: calc(100% / 3);
+    width: 100%;
+  }
+
+.cropper-dashed.dashed-v {
+    border-left-width: 1px;
+    border-right-width: 1px;
+    height: 100%;
+    left: calc(100% / 3);
+    top: 0;
+    width: calc(100% / 3);
+  }
+
+.cropper-center {
+  display: block;
+  height: 0;
+  left: 50%;
+  opacity: 0.75;
+  position: absolute;
+  top: 50%;
+  width: 0;
+}
+
+.cropper-center::before,
+  .cropper-center::after {
+    background-color: #eee;
+    content: " ";
+    display: block;
+    position: absolute;
+  }
+
+.cropper-center::before {
+    height: 1px;
+    left: -3px;
+    top: 0;
+    width: 7px;
+  }
+
+.cropper-center::after {
+    height: 7px;
+    left: 0;
+    top: -3px;
+    width: 1px;
+  }
+
+.cropper-face,
+.cropper-line,
+.cropper-point {
+  display: block;
+  height: 100%;
+  opacity: 0.1;
+  position: absolute;
+  width: 100%;
+}
+
+.cropper-face {
+  background-color: #fff;
+  left: 0;
+  top: 0;
+}
+
+.cropper-line {
+  background-color: #39f;
+}
+
+.cropper-line.line-e {
+    cursor: ew-resize;
+    right: -3px;
+    top: 0;
+    width: 5px;
+  }
+
+.cropper-line.line-n {
+    cursor: ns-resize;
+    height: 5px;
+    left: 0;
+    top: -3px;
+  }
+
+.cropper-line.line-w {
+    cursor: ew-resize;
+    left: -3px;
+    top: 0;
+    width: 5px;
+  }
+
+.cropper-line.line-s {
+    bottom: -3px;
+    cursor: ns-resize;
+    height: 5px;
+    left: 0;
+  }
+
+.cropper-point {
+  background-color: #39f;
+  height: 5px;
+  opacity: 0.75;
+  width: 5px;
+}
+
+.cropper-point.point-e {
+    cursor: ew-resize;
+    margin-top: -3px;
+    right: -3px;
+    top: 50%;
+  }
+
+.cropper-point.point-n {
+    cursor: ns-resize;
+    left: 50%;
+    margin-left: -3px;
+    top: -3px;
+  }
+
+.cropper-point.point-w {
+    cursor: ew-resize;
+    left: -3px;
+    margin-top: -3px;
+    top: 50%;
+  }
+
+.cropper-point.point-s {
+    bottom: -3px;
+    cursor: s-resize;
+    left: 50%;
+    margin-left: -3px;
+  }
+
+.cropper-point.point-ne {
+    cursor: nesw-resize;
+    right: -3px;
+    top: -3px;
+  }
+
+.cropper-point.point-nw {
+    cursor: nwse-resize;
+    left: -3px;
+    top: -3px;
+  }
+
+.cropper-point.point-sw {
+    bottom: -3px;
+    cursor: nesw-resize;
+    left: -3px;
+  }
+
+.cropper-point.point-se {
+    bottom: -3px;
+    cursor: nwse-resize;
+    height: 20px;
+    opacity: 1;
+    right: -3px;
+    width: 20px;
+  }
+
+@media (min-width: 768px) {
+
+.cropper-point.point-se {
+      height: 15px;
+      width: 15px;
+  }
+    }
+
+@media (min-width: 992px) {
+
+.cropper-point.point-se {
+      height: 10px;
+      width: 10px;
+  }
+    }
+
+@media (min-width: 1200px) {
+
+.cropper-point.point-se {
+      height: 5px;
+      opacity: 0.75;
+      width: 5px;
+  }
+    }
+
+.cropper-point.point-se::before {
+    background-color: #39f;
+    bottom: -50%;
+    content: " ";
+    display: block;
+    height: 200%;
+    opacity: 0;
+    position: absolute;
+    right: -50%;
+    width: 200%;
+  }
+
+.cropper-invisible {
+  opacity: 0;
+}
+
+.cropper-bg {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAAA3NCSVQICAjb4U/gAAAABlBMVEXMzMz////TjRV2AAAACXBIWXMAAArrAAAK6wGCiw1aAAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M26LyyjAAAABFJREFUCJlj+M/AgBVhF/0PAH6/D/HkDxOGAAAAAElFTkSuQmCC);
+}
+
+.cropper-hide {
+  display: block;
+  height: 0;
+  position: absolute;
+  width: 0;
+}
+
+.cropper-hidden {
+  display: none !important;
+}
+
+.cropper-move {
+  cursor: move;
+}
+
+.cropper-crop {
+  cursor: crosshair;
+}
+
+.cropper-disabled .cropper-drag-box,
+.cropper-disabled .cropper-face,
+.cropper-disabled .cropper-line,
+.cropper-disabled .cropper-point {
+  cursor: not-allowed;
+}
+</style><style data-styled="active" data-styled-version="5.3.3"></style></head><body><div id="strapi"><div class="sc-bdvvtL sc-gsDKAQ kTFkJL cyxgkm"></div><a href="http://localhost:1337/admin/#main-content" class="sc-bdvvtL sc-fmBCVi lmiUpG bYoGUI" style="">Skip to content</a><div class="sc-bdvvtL ehHzEF"><a href="http://localhost:1337/admin/#main-content" class="sc-bdvvtL sc-fmBCVi lmiUpG bYoGUI">Skip to content</a><div class="sc-bdvvtL sc-gsDKAQ bOQZK drnnQc"><nav class="sc-bdvvtL sc-gsDKAQ sc-cdJjGe jNLgJA fUJAuF dpPuPs"><a aria-current="page" class="sc-eSJyHI iHUlhu active" href="http://localhost:1337/admin/"><div class="sc-bdvvtL eMEmwh"><div class="sc-bdvvtL sc-gsDKAQ bOQZK WlUdp"><div aria-hidden="true" tabindex="-1" class="sc-iboAsT krRwBi"><img src="data:image/svg+xml,%3csvg%20width=&#39;800&#39;%20height=&#39;800&#39;%20viewBox=&#39;0%200%20800%20800&#39;%20fill=&#39;none&#39;%20xmlns=&#39;http://www.w3.org/2000/svg&#39;%3e%3cpath%20d=&#39;M39%20282c0-118%200-176.9%2036.6-213.5C112.2%2032%20171.1%2032%20288.9%2032h221.2c117.8%200%20176.7%200%20213.3%2036.6C760%20105.2%20760%20164.1%20760%20281.9v221.2c0%20117.8%200%20176.7-36.6%20213.3C686.8%20753%20627.9%20753%20510.1%20753H288.9c-117.8%200-176.7%200-213.3-36.6C39%20679.8%2039%20620.9%2039%20503.1V281.9Z&#39;%20fill=&#39;%234945FF&#39;/%3e%3cpath%20fill-rule=&#39;evenodd&#39;%20clip-rule=&#39;evenodd&#39;%20d=&#39;M536.4%20250.7H293.7v123.8h123.8v123.7h123.8V255.5c0-2.6-2.2-4.8-4.9-4.8Z&#39;%20fill=&#39;%23fff&#39;/%3e%3cpath%20fill=&#39;%23fff&#39;%20d=&#39;M412.7%20374.5h4.8v4.8h-4.8z&#39;/%3e%3cpath%20d=&#39;M293.8%20374.5h119c2.6%200%204.8%202.1%204.8%204.8v119h-119a4.8%204.8%200%200%201-4.8-4.9v-119Z&#39;%20fill=&#39;%239593FF&#39;/%3e%3cpath%20d=&#39;M417.5%20498.2h123.8L421.6%20618a2.4%202.4%200%200%201-4-1.7v-118ZM293.8%20374.5h-118a2.4%202.4%200%200%201-1.7-4.1l119.7-119.7v123.8Z&#39;%20fill=&#39;%239593FF&#39;/%3e%3c/svg%3e" alt="Application logo"></div><div class="sc-bdvvtL bqRyns"><span class="sc-dkPtRN cloSuT">Strapi Dashboard<span class="sc-iCfMLu gejpLQ">Workplace</span></span><p aria-hidden="true" class="sc-dkPtRN iWDQAp">Workplace</p></div></div></div></a><hr class="sc-bdvvtL sc-uojGG ctauMB cxWpTV"><div class="sc-bdvvtL sc-kQoPux fLcqbp eZNaif"><ul class="sc-bdvvtL sc-gsDKAQ bOQZK eczezx"><li><a class="sc-kiwPtn kKQZEg" href="http://localhost:1337/admin/content-manager"><span class="sc-bdvvtL sc-gsDKAQ sc-bePbDJ bOQZK iNsRQW louaoe"><div class="sc-bdvvtL sc-gsDKAQ bOQZK WlUdp"><span aria-hidden="true" class="sc-bdvvtL sc-ekRyGy ideofY eAOfEU"><svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="none" viewBox="0 0 24 24"><path fill="#212134" fill-rule="evenodd" d="M23.707.297A1 1 0 0 0 23 .004h-2a13.907 13.907 0 0 0-5.38 1.077 1 1 0 0 0-.615.923V4.92a.035.035 0 0 1-.022.038l-2-1.47a1 1 0 0 0-1.265.052A14 14 0 0 0 7 14.004v1.585l-2.707 2.707a1 1 0 1 0 1.415 1.415l2.707-2.708H10a14.014 14.014 0 0 0 14-14v-2a1 1 0 0 0-.293-.706ZM18 23.999H3a3 3 0 0 1-3-3V6A3 3 0 0 1 3 3h3a1 1 0 1 1 0 2H3a1 1 0 0 0-1 1v15a1 1 0 0 0 1 1h15a1 1 0 0 0 1-1v-3a1 1 0 1 1 2 0v3a3 3 0 0 1-3 3Z" clip-rule="evenodd"></path></svg></span><span class="sc-dkPtRN jJrAOl">Content Manager</span></div></span></a></li><li><div class="sc-bdvvtL sc-gsDKAQ bOQZK cyxgkm"><span class="sc-bdvvtL dbOcYF"><span class="sc-dkPtRN lhcJYI">Plugins</span></span><ul class="sc-bdvvtL sc-gsDKAQ bOQZK cyxgkm"><li><div class="sc-bdvvtL sc-cAUCVt bOQZK cHRiQt"><a class="sc-kiwPtn kKQZEg" href="http://localhost:1337/admin/plugins/content-type-builder"><span class="sc-bdvvtL sc-gsDKAQ sc-bePbDJ bOQZK iNsRQW louaoe"><div class="sc-bdvvtL sc-gsDKAQ bOQZK WlUdp"><span aria-hidden="true" class="sc-bdvvtL sc-ekRyGy ideofY eAOfEU"><svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="none" viewBox="0 0 24 24"><path fill="#212134" fill-rule="evenodd" d="M2.182 0A2.182 2.182 0 0 0 0 2.182v19.636C0 23.023.977 24 2.182 24h19.636A2.182 2.182 0 0 0 24 21.818V2.182A2.182 2.182 0 0 0 21.818 0H2.182Zm9.354 11.987h7.539c.314 0 .55.209.55.549v6.539c0 .34-.236.55-.55.55h-7.539c-.34 0-.55-.236-.55-.55v-6.539c0-.34.236-.55.55-.55Zm-6.638-2.27h14.177c.314 0 .549-.209.549-.549v-4.27c0-.34-.21-.549-.55-.549H4.899c-.313 0-.549.21-.549.55v4.269c0 .34.236.55.55.55Zm3.27 9.907h-3.27a.536.536 0 0 1-.549-.55v-6.538c0-.34.236-.55.55-.55h3.269c.34 0 .55.21.55.55v6.539c0 .34-.236.55-.55.55Z" clip-rule="evenodd"></path></svg></span><span class="sc-dkPtRN jJrAOl">Content-Type Builder</span></div></span></a></div></li><li><div class="sc-bdvvtL sc-cAUCVt bOQZK cHRiQt"><a class="sc-kiwPtn kKQZEg" href="http://localhost:1337/admin/plugins/upload"><span class="sc-bdvvtL sc-gsDKAQ sc-bePbDJ bOQZK iNsRQW louaoe"><div class="sc-bdvvtL sc-gsDKAQ bOQZK WlUdp"><span aria-hidden="true" class="sc-bdvvtL sc-ekRyGy ideofY eAOfEU"><svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="none" viewBox="0 0 24 24"><path fill="#212134" fill-rule="evenodd" d="M4.3.6a.9.9 0 1 0 0 1.8h15.311a.9.9 0 1 0 0-1.8H4.301Zm17.1 3.7A1.6 1.6 0 0 1 23 5.9v15.5a1.6 1.6 0 0 1-1.6 1.6H2.6A1.601 1.601 0 0 1 1 21.4V5.915C1 5.03 1.716 4.3 2.6 4.3h18.8ZM5.032 19.18h14.336l-3.136-3.205-1.792 1.831-4.032-4.12-5.376 5.494Zm13.44-8.697c0 1.282-.985 2.289-2.24 2.289-1.254 0-2.24-1.007-2.24-2.29 0-1.281.986-2.288 2.24-2.288 1.255 0 2.24 1.007 2.24 2.289Z" clip-rule="evenodd"></path></svg></span><span class="sc-dkPtRN jJrAOl">Media Library</span></div></span></a></div></li><li><div class="sc-bdvvtL sc-cAUCVt bOQZK cHRiQt"><a class="sc-kiwPtn kKQZEg" href="http://localhost:1337/admin/plugins/purchase-content-releases"><span class="sc-bdvvtL sc-gsDKAQ sc-bePbDJ bOQZK iNsRQW louaoe"><div class="sc-bdvvtL sc-gsDKAQ bOQZK WlUdp"><span aria-hidden="true" class="sc-bdvvtL sc-ekRyGy ideofY eAOfEU"><svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="none" viewBox="0 0 24 24"><path fill="#212134" d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.53-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685Z"></path></svg></span><span class="sc-dkPtRN jJrAOl">Releases</span></div><div class="sc-bdvvtL sc-gsDKAQ sc-iqVWFU hqLXkk epwiNy bbqIGP sc-eDtABA hNpefH"><span class="sc-dkPtRN lhcJYI"><svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="none" viewBox="0 0 24 24" class="sc-bdvvtL sc-gGCDDS bmGvsO gNsEtd"><path fill="#8E8EA9" d="M19 10h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1V9a7 7 0 0 1 14 0v1Zm-2 0V9A5 5 0 0 0 7 9v1h10Zm-6 4v4h2v-4h-2Z"></path></svg></span></div></span></a></div></li><li><div class="sc-bdvvtL sc-cAUCVt bOQZK cHRiQt"><a class="sc-kiwPtn kKQZEg" href="http://localhost:1337/admin/plugins/cloud"><span class="sc-bdvvtL sc-gsDKAQ sc-bePbDJ bOQZK iNsRQW louaoe"><div class="sc-bdvvtL sc-gsDKAQ bOQZK WlUdp"><span aria-hidden="true" class="sc-bdvvtL sc-ekRyGy ideofY eAOfEU"><svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="none" viewBox="0 0 24 24"><path fill="#212134" d="M17 7a8.003 8.003 0 0 0-7.493 5.19l1.874.703A6.002 6.002 0 0 1 23.001 15a6 6 0 0 1-6 6H7A6 6 0 0 1 5.007 9.339a7 7 0 0 1 13.757-2.143A8.027 8.027 0 0 0 17 7Z"></path></svg></span><span class="sc-dkPtRN jJrAOl">Deploy</span></div></span></a></div></li></ul></div></li><li><div class="sc-bdvvtL sc-gsDKAQ bOQZK cyxgkm"><span class="sc-bdvvtL dbOcYF"><span class="sc-dkPtRN lhcJYI">General</span></span><ul class="sc-bdvvtL sc-gsDKAQ bOQZK cyxgkm"><li><a class="sc-kiwPtn kKQZEg" href="http://localhost:1337/admin/list-plugins"><span class="sc-bdvvtL sc-gsDKAQ sc-bePbDJ bOQZK iNsRQW louaoe"><div class="sc-bdvvtL sc-gsDKAQ bOQZK WlUdp"><span aria-hidden="true" class="sc-bdvvtL sc-ekRyGy ideofY eAOfEU"><svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="none" viewBox="0 0 25 25"><path fill="#212134" fill-rule="evenodd" d="m13.58.448 3.177 3.176L18.66 1.72a3.267 3.267 0 1 1 4.62 4.62l-1.904 1.904 3.175 3.175a1.528 1.528 0 0 1 0 2.162l-3.175 3.175L20.2 15.58a3.267 3.267 0 1 0-4.62 4.62l1.177 1.177-3.176 3.176a1.528 1.528 0 0 1-2.162 0l-3.175-3.175-1.902 1.902a3.267 3.267 0 1 1-4.62-4.62l1.902-1.902-3.176-3.176a1.528 1.528 0 0 1 0-2.162l3.176-3.176L4.8 9.42a3.267 3.267 0 0 0 4.62-4.62L8.244 3.623 11.419.448a1.528 1.528 0 0 1 2.162 0Z" clip-rule="evenodd"></path></svg></span><span class="sc-dkPtRN jJrAOl">Plugins</span></div></span></a></li><li><a class="sc-kiwPtn kKQZEg" href="http://localhost:1337/admin/marketplace"><span class="sc-bdvvtL sc-gsDKAQ sc-bePbDJ bOQZK iNsRQW louaoe"><div class="sc-bdvvtL sc-gsDKAQ bOQZK WlUdp"><span aria-hidden="true" class="sc-bdvvtL sc-ekRyGy ideofY eAOfEU"><svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="none" viewBox="0 0 24 24"><path fill="#212134" fill-rule="evenodd" d="M23.12 3.907c-.025 0-.055-.005-.087-.011a.72.72 0 0 0-.13-.016H5.929l-.27-1.805A2.413 2.413 0 0 0 3.26 0H1.078C.485 0 0 .485 0 1.078c0 .593.485 1.078 1.078 1.078H3.26c.135 0 .243.107.27.242L5.2 13.77a2.954 2.954 0 0 0 2.91 2.506h11.21c1.401 0 2.614-.997 2.91-2.371l1.752-8.757a1.065 1.065 0 0 0-.863-1.24Zm-4.932 13.927a2.8 2.8 0 0 0-2.802 2.802 2.8 2.8 0 0 0 2.802 2.802 2.8 2.8 0 0 0 2.803-2.802c-.027-1.536-1.267-2.802-2.803-2.802Zm-9.646 0a2.786 2.786 0 0 1 2.775 2.667c.081 1.536-1.132 2.83-2.667 2.91h-.054a2.762 2.762 0 0 1-2.749-2.667 2.819 2.819 0 0 1 2.695-2.91Z" clip-rule="evenodd"></path></svg></span><span class="sc-dkPtRN jJrAOl">Marketplace</span></div></span></a></li><li><a class="sc-kiwPtn kKQZEg" href="http://localhost:1337/admin/settings"><span class="sc-bdvvtL sc-gsDKAQ sc-bePbDJ bOQZK iNsRQW louaoe"><div class="sc-bdvvtL sc-gsDKAQ bOQZK WlUdp"><span aria-hidden="true" class="sc-bdvvtL sc-ekRyGy ideofY eAOfEU"><svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="none" viewBox="0 0 24 24"><path fill="#212134" fill-rule="evenodd" d="M2.68 9.192c-.6.276-2.114 1.18-2.306 1.303a.792.792 0 0 0-.374.68v1.65a.797.797 0 0 0 .384.687c.254.16 1.73 1.042 2.306 1.303l.744 1.8c-.24.634-.67 2.333-.72 2.554a.797.797 0 0 0 .216.744l1.167 1.166a.801.801 0 0 0 .744.216l.03-.008c.36-.092 1.946-.498 2.523-.712l1.8.744c.276.6 1.181 2.115 1.304 2.307a.805.805 0 0 0 .679.374h1.649a.797.797 0 0 0 .686-.384c.16-.254 1.042-1.73 1.303-2.306l1.8-.744c.634.24 2.333.67 2.554.72a.797.797 0 0 0 .744-.216l1.166-1.167a.803.803 0 0 0 .216-.744l-.008-.03c-.092-.36-.498-1.946-.712-2.523l.744-1.8c.6-.276 2.115-1.181 2.307-1.304a.804.804 0 0 0 .374-.679v-1.649a.796.796 0 0 0-.382-.679c-.254-.16-1.73-1.041-2.306-1.303l-.744-1.8c.24-.634.67-2.333.72-2.554a.796.796 0 0 0-.216-.744l-1.166-1.173a.802.802 0 0 0-.744-.216l-.03.008c-.361.092-1.947.498-2.524.712l-1.8-.744c-.276-.6-1.18-2.115-1.303-2.307a.803.803 0 0 0-.68-.374h-1.65a.797.797 0 0 0-.68.382c-.16.254-1.041 1.73-1.303 2.306l-1.8.744c-.634-.24-2.333-.67-2.554-.72a.797.797 0 0 0-.744.216L2.921 4.094a.802.802 0 0 0-.216.744l.008.03c.092.361.498 1.947.712 2.524l-.744 1.8ZM12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z" clip-rule="evenodd"></path></svg></span><span class="sc-dkPtRN jJrAOl">Settings</span></div><div class="sc-bdvvtL sc-gsDKAQ sc-iqVWFU hqLXkk epwiNy bbqIGP sc-eDtABA hNpefH"><span class="sc-dkPtRN lhcJYI">1</span></div></span></a></li></ul></div></li></ul></div><div class="sc-bdvvtL hDpLQC"><div id="main-nav-user-button" class="sc-bdvvtL sc-bcCSHH bPwGKp fXOdVI"><button class="sc-bdvvtL sc-gsDKAQ bOQZK WlUdp"><div class="sc-bdvvtL sc-gsDKAQ sc-jtXEFf gBhMcW iHKiMO kGfXVs"><span class="sc-dkPtRN kMuMcd">VM</span></div><span class="sc-bdvvtL DMwVG"><span class="sc-dkPtRN fGjNXb">Vach Malkhasyan</span></span></button></div><button class="sc-bdvvtL sc-gsDKAQ sc-eBhrFy bOQZK iHKiMO nKcjm"><svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="none" viewBox="0 0 10 16" aria-hidden="true" class="sc-bdvvtL sc-gGCDDS dCzDuG gNsEtd"><path fill="#32324D" d="M9.88 14.12 3.773 8 9.88 1.88 8 0 0 8l8 8 1.88-1.88Z"></path></svg><div class="sc-iCfMLu gejpLQ">Collapse the navbar</div></button></div></nav><div class="sc-bdvvtL sc-lcDUFh bOQZK jGdBhH"><div class="sc-bdvvtL sc-eXlEPa bOQZK dugaIu"><div class="sc-bdvvtL sc-iFMAIt jtRngr iLNvlN"><main aria-labelledby="main-content-title" id="main-content" tabindex="-1" class="sc-bdvvtL sc-jHkVzv bOQZK dyVEVs"><div class="sc-bdvvtL sc-fpYaaq bOQZK boGbAB"><img alt="" aria-hidden="true" src="data:image/svg+xml,%3csvg%20width=&#39;148&#39;%20height=&#39;148&#39;%20fill=&#39;none&#39;%20xmlns=&#39;http://www.w3.org/2000/svg&#39;%3e%3cg%20opacity=&#39;.8&#39;%20fill-rule=&#39;evenodd&#39;%20clip-rule=&#39;evenodd&#39;%3e%3cpath%20opacity=&#39;.15&#39;%20d=&#39;M110.81%2037H73.97V74.1h36.84V37Z&#39;%20fill=&#39;url(%23a)&#39;/%3e%3cpath%20opacity=&#39;.07&#39;%20d=&#39;M36.84%200H0v37.08h36.84V0Z&#39;%20fill=&#39;url(%23b)&#39;/%3e%3cpath%20opacity=&#39;.07&#39;%20d=&#39;M73.92%2073.95H37.08v37.08h36.84V73.95Z&#39;%20fill=&#39;url(%23c)&#39;/%3e%3cpath%20opacity=&#39;.07&#39;%20d=&#39;M147.99%20110.92h-37.3V148H148v-37.08Z&#39;%20fill=&#39;url(%23d)&#39;/%3e%3cpath%20opacity=&#39;.15&#39;%20d=&#39;M73.83%2037H36.84L73.83%200v37Z&#39;%20fill=&#39;url(%23e)&#39;/%3e%3cpath%20opacity=&#39;.15&#39;%20d=&#39;M110.6%20111.02v-37h36.98l-36.99%2037Z&#39;%20fill=&#39;url(%23f)&#39;/%3e%3cpath%20opacity=&#39;.4&#39;%20d=&#39;M73.83%200v37h36.98v37.01h37V3a3%203%200%200%200-3-3H73.82Z&#39;%20fill=&#39;url(%23g)&#39;/%3e%3c/g%3e%3cdefs%3e%3clinearGradient%20id=&#39;a&#39;%20x1=&#39;91.31&#39;%20y1=&#39;83.31&#39;%20x2=&#39;118.24&#39;%20y2=&#39;56.59&#39;%20gradientUnits=&#39;userSpaceOnUse&#39;%3e%3cstop%20stop-color=&#39;%237A92FF&#39;/%3e%3cstop%20offset=&#39;1&#39;%20stop-color=&#39;%233253EA&#39;/%3e%3c/linearGradient%3e%3clinearGradient%20id=&#39;b&#39;%20x1=&#39;40.99&#39;%20y1=&#39;13.88&#39;%20x2=&#39;.01&#39;%20y2=&#39;11.64&#39;%20gradientUnits=&#39;userSpaceOnUse&#39;%3e%3cstop%20stop-color=&#39;%23A8B8FF&#39;/%3e%3cstop%20offset=&#39;1&#39;%20stop-color=&#39;%233253EA&#39;/%3e%3c/linearGradient%3e%3clinearGradient%20id=&#39;c&#39;%20x1=&#39;54.41&#39;%20y1=&#39;120.25&#39;%20x2=&#39;81.35&#39;%20y2=&#39;93.52&#39;%20gradientUnits=&#39;userSpaceOnUse&#39;%3e%3cstop%20stop-color=&#39;%23A8B8FF&#39;/%3e%3cstop%20offset=&#39;1&#39;%20stop-color=&#39;%233253EA&#39;/%3e%3c/linearGradient%3e%3clinearGradient%20id=&#39;d&#39;%20x1=&#39;128.24&#39;%20y1=&#39;157.22&#39;%20x2=&#39;155.17&#39;%20y2=&#39;130.17&#39;%20gradientUnits=&#39;userSpaceOnUse&#39;%3e%3cstop%20stop-color=&#39;%23A8B8FF&#39;/%3e%3cstop%20offset=&#39;1&#39;%20stop-color=&#39;%233253EA&#39;/%3e%3c/linearGradient%3e%3clinearGradient%20id=&#39;e&#39;%20x1=&#39;54.24&#39;%20y1=&#39;46.21&#39;%20x2=&#39;81.12&#39;%20y2=&#39;19.38&#39;%20gradientUnits=&#39;userSpaceOnUse&#39;%3e%3cstop%20stop-color=&#39;%237A92FF&#39;/%3e%3cstop%20offset=&#39;1&#39;%20stop-color=&#39;%233253EA&#39;/%3e%3c/linearGradient%3e%3clinearGradient%20id=&#39;f&#39;%20x1=&#39;126.28&#39;%20y1=&#39;74.05&#39;%20x2=&#39;124.94&#39;%20y2=&#39;111.07&#39;%20gradientUnits=&#39;userSpaceOnUse&#39;%3e%3cstop%20stop-color=&#39;%237A92FF&#39;/%3e%3cstop%20offset=&#39;1&#39;%20stop-color=&#39;%233253EA&#39;/%3e%3c/linearGradient%3e%3clinearGradient%20id=&#39;g&#39;%20x1=&#39;73.37&#39;%20y1=&#39;36.87&#39;%20x2=&#39;132.87&#39;%20y2=&#39;66.74&#39;%20gradientUnits=&#39;userSpaceOnUse&#39;%3e%3cstop%20stop-color=&#39;%237A92FF&#39;/%3e%3cstop%20offset=&#39;1&#39;%20stop-color=&#39;%233858EA&#39;/%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e"></div><div class="sc-bdvvtL lmkcod"><div class="sc-bdvvtL sc-bQtKYq bOQZK lnLMih"><div class="sc-bdvvtL sc-fXEqDS bOQZK fnQmfe"><div><div class="sc-bdvvtL czoIAj"><div class="sc-bdvvtL sc-gsDKAQ bOQZK kXpaSR"><h1 class="sc-dkPtRN cBMajQ">Welcome on board 👋</h1><span class="sc-dkPtRN sc-lnDqNf kRKeQh laHrXo">Congrats! You are logged as the first administrator. To discover the powerful features provided by Strapi, we recommend you to create your first Content type!</span><button aria-disabled="false" type="button" class="sc-bdvvtL sc-gsDKAQ sc-egiyK iAycJB kpZefO iNTHOa sc-ksdxgE dxzjuh"><span class="sc-dkPtRN cloSuT">Create your first Content type</span><div aria-hidden="true" class="sc-bdvvtL sc-gsDKAQ bOQZK WlUdp"><svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="none" viewBox="0 0 24 24"><path fill="#212134" d="M0 10.7c0-.11.09-.2.2-.2h18.06l-8.239-8.239a.2.2 0 0 1 0-.282L11.86.14a.2.2 0 0 1 .282 0L23.86 11.86a.2.2 0 0 1 0 .282L12.14 23.86a.2.2 0 0 1-.282 0L10.02 22.02a.2.2 0 0 1 0-.282L18.26 13.5H.2a.2.2 0 0 1-.2-.2v-2.6Z"></path></svg></div></button></div></div></div></div></div><div class="sc-bdvvtL sc-bQtKYq bOQZK cHDzsz"><div class="sc-bdvvtL sc-fXEqDS bOQZK fnQmfe"><div class="sc-bdvvtL hmXWWS"><div class="sc-bdvvtL sc-gsDKAQ bOQZK cJazwc"><h2 class="sc-dkPtRN efqOKs">3 steps to get started</h2><div class="sc-bdvvtL bOQZK"><div class="sc-bdvvtL bOQZK"><div class="sc-bdvvtL sc-gsDKAQ bOQZK WlUdp"><div class="sc-bdvvtL bBYLLt"><div class="sc-bdvvtL sc-gsDKAQ gGfWui iHKiMO"><span class="sc-dkPtRN bMTSiz">1</span></div></div><h3 class="sc-dkPtRN jwMTpI">🧠 Build the content structure</h3></div><div class="sc-bdvvtL sc-gsDKAQ bOQZK drnnQc"><div class="sc-bdvvtL sc-gsDKAQ jAIhsR iHKiMO"><div class="sc-bdvvtL ebaGFL"></div></div><div class="sc-bdvvtL kCRgaP"><a class="sc-bdvvtL sc-gsDKAQ sc-egiyK sc-fbyfCU buYwEW cYcZYW iNTHOa ZYQVI" aria-disabled="false" href="http://localhost:1337/admin/plugins/content-type-builder"><span class="sc-dkPtRN GUInE">Go to the Content type Builder</span><div aria-hidden="true" class="sc-bdvvtL sc-gsDKAQ bOQZK WlUdp"><svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="none" viewBox="0 0 24 24"><path fill="#212134" d="M0 10.7c0-.11.09-.2.2-.2h18.06l-8.239-8.239a.2.2 0 0 1 0-.282L11.86.14a.2.2 0 0 1 .282 0L23.86 11.86a.2.2 0 0 1 0 .282L12.14 23.86a.2.2 0 0 1-.282 0L10.02 22.02a.2.2 0 0 1 0-.282L18.26 13.5H.2a.2.2 0 0 1-.2-.2v-2.6Z"></path></svg></div></a></div></div></div><div class="sc-bdvvtL bOQZK"><div class="sc-bdvvtL sc-gsDKAQ bOQZK WlUdp"><div class="sc-bdvvtL bBYLLt"><div class="sc-bdvvtL sc-gsDKAQ BosJg iHKiMO"><span class="sc-dkPtRN jiZYFX">2</span></div></div><h3 class="sc-dkPtRN jwMTpI">⚡️ What would you like to share with the world?</h3></div><div class="sc-bdvvtL sc-gsDKAQ bOQZK drnnQc"><div class="sc-bdvvtL sc-gsDKAQ jAIhsR iHKiMO"><div class="sc-bdvvtL gzRobJ"></div></div><div class="sc-bdvvtL kCRgaP"></div></div></div><div class="sc-bdvvtL bOQZK"><div class="sc-bdvvtL sc-gsDKAQ bOQZK WlUdp"><div class="sc-bdvvtL bBYLLt"><div class="sc-bdvvtL sc-gsDKAQ BosJg iHKiMO"><span class="sc-dkPtRN jiZYFX">3</span></div></div><h3 class="sc-dkPtRN jwMTpI">🚀 See content in action</h3></div><div class="sc-bdvvtL sc-gsDKAQ bOQZK drnnQc"><div class="sc-bdvvtL sc-gsDKAQ jAIhsR iHKiMO"></div><div class="sc-bdvvtL kCRgaP"></div></div></div></div></div><div class="sc-bdvvtL sc-gsDKAQ bOQZK dJVZOU"><button aria-disabled="false" type="button" class="sc-bdvvtL sc-gsDKAQ sc-egiyK iAycJB kpZefO iNTHOa sc-ksdxgE pGyaP"><span class="sc-dkPtRN GUInE">Skip the tour</span></button></div></div></div><div class="sc-bdvvtL sc-fXEqDS bOQZK eEGuZO"><aside aria-labelledby="join-the-community" class="sc-bdvvtL sc-gsDKAQ jcJQjy jnOzyz"><div class="sc-bdvvtL sc-gsDKAQ bOQZK eKJSSE"><div class="sc-bdvvtL sc-gsDKAQ bOQZK geixVZ"><h2 id="join-the-community" class="sc-dkPtRN jwMTpI">Join the community</h2><span class="sc-dkPtRN hgoZje">Discuss with team members, contributors and developers on different channels.</span></div><a target="_blank" rel="noreferrer noopener" href="https://feedback.strapi.io/" aria-disabled="false" class="sc-bdvvtL fFZSIZ sc-fvxzrP dvIBbO"><span class="sc-dkPtRN emnumG">See our roadmap</span><svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="none" viewBox="0 0 24 24"><path fill="#32324D" d="M16.235 2.824a1.412 1.412 0 0 1 0-2.824h6.353C23.368 0 24 .633 24 1.412v6.353a1.412 1.412 0 0 1-2.823 0V4.82l-8.179 8.178a1.412 1.412 0 0 1-1.996-1.996l8.178-8.178h-2.945Zm4.942 10.588a1.412 1.412 0 0 1 2.823 0v9.176c0 .78-.632 1.412-1.412 1.412H1.412C.632 24 0 23.368 0 22.588V1.412C0 .632.632 0 1.412 0h9.176a1.412 1.412 0 0 1 0 2.824H2.824v18.353h18.353v-7.765Z"></path></svg></a></div><div class="sc-bdvvtL sc-bQtKYq bOQZK lnLMih sc-ePIFMk jMkqqS"><div class="sc-bdvvtL sc-fXEqDS bOQZK imZNlA"><a target="_self" href="https://github.com/strapi/strapi/" aria-disabled="false" class="sc-bdvvtL fFZSIZ sc-bdvvtL sc-gsDKAQ sc-egiyK sc-fbyfCU fqNvxS cYcZYW iNTHOa iXwlId sc-fezjOJ iwEhij"><div aria-hidden="true" class="sc-bdvvtL sc-gsDKAQ bOQZK WlUdp"><svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="#7289DA" viewBox="0 0 24 24"><path fill="#161614" d="M12 0C5.373 0 0 5.501 0 12.288c0 5.43 3.438 10.035 8.206 11.66.6.114.82-.266.82-.59 0-.294-.01-1.262-.016-2.289-3.338.744-4.043-1.45-4.043-1.45-.546-1.42-1.332-1.797-1.332-1.797-1.089-.763.082-.747.082-.747 1.205.086 1.84 1.266 1.84 1.266 1.07 1.878 2.807 1.335 3.491 1.021.108-.794.42-1.336.762-1.643-2.665-.31-5.467-1.364-5.467-6.073 0-1.341.469-2.437 1.236-3.298-.124-.31-.535-1.56.117-3.252 0 0 1.007-.33 3.3 1.26A11.25 11.25 0 0 1 12 5.942c1.02.005 2.047.141 3.006.414 2.29-1.59 3.297-1.26 3.297-1.26.653 1.693.242 2.943.118 3.252.77.86 1.235 1.957 1.235 3.298 0 4.72-2.808 5.76-5.48 6.063.43.382.814 1.13.814 2.276 0 1.644-.014 2.967-.014 3.372 0 .327.216.71.825.59C20.566 22.32 24 17.715 24 12.288 24 5.501 18.627 0 12 0Z"></path></svg></div><span class="sc-dkPtRN cloSuT">Github</span></a></div><div class="sc-bdvvtL sc-fXEqDS bOQZK imZNlA"><a target="_self" href="https://discord.strapi.io/" aria-disabled="false" class="sc-bdvvtL fFZSIZ sc-bdvvtL sc-gsDKAQ sc-egiyK sc-fbyfCU fqNvxS cYcZYW iNTHOa iXwlId sc-fezjOJ iwEhij"><div aria-hidden="true" class="sc-bdvvtL sc-gsDKAQ bOQZK WlUdp"><svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="none" viewBox="0 0 24 24" class="sc-hctura doJDjW"><path fill="#7289DA" d="M20.04 0H3.96A2.464 2.464 0 0 0 1.5 2.468v16.2a2.464 2.464 0 0 0 2.46 2.469h13.608l-.636-2.217 1.536 1.426 1.452 1.342 2.58 2.277V2.468A2.464 2.464 0 0 0 20.04 0Zm-4.632 15.65s-.432-.516-.792-.972c1.572-.443 2.172-1.425 2.172-1.425-.492.323-.96.55-1.38.707-.6.251-1.176.419-1.74.515a8.417 8.417 0 0 1-3.108-.012 10.086 10.086 0 0 1-1.764-.515 7.053 7.053 0 0 1-.876-.408c-.036-.024-.072-.036-.108-.06a.166.166 0 0 1-.048-.036 4.202 4.202 0 0 1-.336-.203s.576.958 2.1 1.414c-.36.455-.804.994-.804.994-2.652-.084-3.66-1.821-3.66-1.821 0-3.859 1.728-6.986 1.728-6.986 1.728-1.294 3.372-1.258 3.372-1.258l.12.144c-2.16.623-3.156 1.57-3.156 1.57s.264-.144.708-.348c1.284-.563 2.304-.72 2.724-.755.072-.012.132-.024.204-.024A9.792 9.792 0 0 1 16.8 7.297s-.948-.898-2.988-1.521l.168-.192s1.644-.036 3.372 1.258c0 0 1.728 3.127 1.728 6.986 0 0-1.02 1.737-3.672 1.821Zm-5.58-5.597c-.684 0-1.224.6-1.224 1.33 0 .731.552 1.33 1.224 1.33.684 0 1.224-.599 1.224-1.33.012-.73-.54-1.33-1.224-1.33Zm4.38 0c-.684 0-1.224.6-1.224 1.33 0 .731.552 1.33 1.224 1.33.684 0 1.224-.599 1.224-1.33 0-.73-.54-1.33-1.224-1.33Z"></path></svg></div><span class="sc-dkPtRN cloSuT">Discord</span></a></div><div class="sc-bdvvtL sc-fXEqDS bOQZK imZNlA"><a target="_self" href="https://www.reddit.com/r/Strapi/" aria-disabled="false" class="sc-bdvvtL fFZSIZ sc-bdvvtL sc-gsDKAQ sc-egiyK sc-fbyfCU fqNvxS cYcZYW iNTHOa iXwlId sc-fezjOJ iwEhij"><div aria-hidden="true" class="sc-bdvvtL sc-gsDKAQ bOQZK WlUdp"><svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="none" viewBox="0 0 24 24" class="sc-jSYIrd cEKDxW"><path fill="#FF4500" fill-rule="evenodd" d="M23.634 12.018c0 6.583-5.263 11.92-11.754 11.92C5.388 23.938.125 18.6.125 12.018S5.388.098 11.88.098c6.491 0 11.754 5.337 11.754 11.92ZM17.94 10.34a1.73 1.73 0 0 1 1.779 1.677c.012.67-.36 1.286-.95 1.585.012.175.012.35 0 .524 0 2.673-3.067 4.842-6.851 4.842s-6.852-2.172-6.852-4.842a3.925 3.925 0 0 1 0-.524 1.662 1.662 0 0 1-.461-.314 1.756 1.756 0 0 1-.076-2.46 1.697 1.697 0 0 1 2.425-.076 8.339 8.339 0 0 1 4.584-1.467l.868-4.136v-.006a.364.364 0 0 1 .435-.282l2.881.584c.184-.326.517-.545.888-.584a1.18 1.18 0 0 1 1.295 1.058 1.188 1.188 0 0 1-1.044 1.313 1.18 1.18 0 0 1-1.294-1.058l-2.515-.536-.763 3.718a8.277 8.277 0 0 1 4.526 1.467 1.71 1.71 0 0 1 1.125-.483Zm-8.798 1.677c-.648 0-1.177.536-1.177 1.194a1.19 1.19 0 0 0 1.177 1.194c.649 0 1.178-.536 1.178-1.194 0-.658-.53-1.194-1.178-1.194Zm2.747 5.39a4.47 4.47 0 0 0 2.904-.919v.047a.339.339 0 0 0 .006-.47.327.327 0 0 0-.465-.007 3.83 3.83 0 0 1-2.457.726 3.802 3.802 0 0 1-2.446-.75.314.314 0 0 0-.403 0 .327.327 0 0 0-.044.454 4.47 4.47 0 0 0 2.905.918Zm1.516-4.155c0 .658.529 1.194 1.178 1.194l-.01.045h.06a1.186 1.186 0 0 0 1.127-1.239c0-.657-.529-1.194-1.178-1.194-.648 0-1.177.537-1.177 1.194Z" clip-rule="evenodd"></path></svg></div><span class="sc-dkPtRN cloSuT">Reddit</span></a></div><div class="sc-bdvvtL sc-fXEqDS bOQZK imZNlA"><a target="_self" href="https://twitter.com/strapijs" aria-disabled="false" class="sc-bdvvtL fFZSIZ sc-bdvvtL sc-gsDKAQ sc-egiyK sc-fbyfCU fqNvxS cYcZYW iNTHOa iXwlId sc-fezjOJ iwEhij"><div aria-hidden="true" class="sc-bdvvtL sc-gsDKAQ bOQZK WlUdp"><svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="none" viewBox="0 0 24 24" class="sc-cCKzRf fgUPhC"><path fill="#1DA1F2" d="M24 4.557a9.83 9.83 0 0 1-2.828.775 4.932 4.932 0 0 0 2.165-2.724 9.864 9.864 0 0 1-3.127 1.195 4.916 4.916 0 0 0-3.594-1.555c-3.179 0-5.515 2.966-4.797 6.045A13.978 13.978 0 0 1 1.671 3.149a4.93 4.93 0 0 0 1.523 6.574 4.903 4.903 0 0 1-2.229-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.935 4.935 0 0 1-2.224.084 4.928 4.928 0 0 0 4.6 3.419A9.9 9.9 0 0 1 0 19.54a13.94 13.94 0 0 0 7.548 2.212c9.142 0 14.307-7.721 13.995-14.646A10.025 10.025 0 0 0 24 4.557Z"></path></svg></div><span class="sc-dkPtRN cloSuT">Twitter</span></a></div><div class="sc-bdvvtL sc-fXEqDS bOQZK imZNlA"><a target="_self" href="https://forum.strapi.io/" aria-disabled="false" class="sc-bdvvtL fFZSIZ sc-bdvvtL sc-gsDKAQ sc-egiyK sc-fbyfCU fqNvxS cYcZYW iNTHOa iXwlId sc-fezjOJ iwEhij"><div aria-hidden="true" class="sc-bdvvtL sc-gsDKAQ bOQZK WlUdp"><svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="none" viewBox="0 0 24 24" class="sc-cnTVOG cMFTGp"><path fill="#231F20" d="M12.103 0C5.533 0 0 5.278 0 11.79V24l12.1-.012c6.57 0 11.9-5.481 11.9-11.992C24 5.486 18.666 0 12.103 0Z"></path><path fill="#FFF9AE" d="M12.22 4.564a7.43 7.43 0 0 0-3.644.956 7.346 7.346 0 0 0-2.692 2.614 7.26 7.26 0 0 0-.149 7.22L4.4 19.606l4.793-1.072a7.433 7.433 0 0 0 6.355-.14 7.36 7.36 0 0 0 2.513-2.057 7.28 7.28 0 0 0 1.372-2.93 7.243 7.243 0 0 0-.035-3.228A7.281 7.281 0 0 0 17.96 7.28a7.365 7.365 0 0 0-2.557-2.002 7.432 7.432 0 0 0-3.178-.715h-.007Z"></path><path fill="#00AEEF" d="M18.071 7.426a7.262 7.262 0 0 1 1.51 4.499 7.264 7.264 0 0 1-1.595 4.47 7.38 7.38 0 0 1-4.028 2.558 7.437 7.437 0 0 1-4.765-.43L4.4 19.61l4.88-.571a7.432 7.432 0 0 0 5.181.858 7.381 7.381 0 0 0 4.443-2.778 7.258 7.258 0 0 0-.833-9.693Z"></path><path fill="#00A94F" d="M16.713 6.078a7.253 7.253 0 0 1 .86 8.928 7.361 7.361 0 0 1-3.736 2.962 7.437 7.437 0 0 1-4.784.065L4.4 19.61l4.793-1.075a7.436 7.436 0 0 0 5.24.313 7.362 7.362 0 0 0 4.123-3.22 7.249 7.249 0 0 0 .914-5.123 7.296 7.296 0 0 0-2.757-4.427Z"></path><path fill="#F15D22" d="M6.176 15.515a7.246 7.246 0 0 1-.26-4.876 7.312 7.312 0 0 1 2.9-3.95 7.427 7.427 0 0 1 9.26.735 7.387 7.387 0 0 0-4.603-2.771 7.431 7.431 0 0 0-5.277 1.068A7.311 7.311 0 0 0 5.06 10.06a7.249 7.249 0 0 0 .676 5.294L4.4 19.607l1.776-4.092Z"></path><path fill="#E31B23" d="M5.735 15.353a7.25 7.25 0 0 1-.764-4.818 7.294 7.294 0 0 1 2.465-4.222 7.415 7.415 0 0 1 4.596-1.744 7.42 7.42 0 0 1 4.681 1.509 7.404 7.404 0 0 0-4.865-2.26 7.421 7.421 0 0 0-5.12 1.61 7.293 7.293 0 0 0-2.66 4.626A7.256 7.256 0 0 0 5.28 15.24l-.877 4.37 1.332-4.257Z"></path></svg></div><span class="sc-dkPtRN cloSuT">Forum</span></a></div><div class="sc-bdvvtL sc-fXEqDS bOQZK imZNlA"><a target="_self" href="https://strapi.io/blog?utm_source=referral&amp;utm_medium=admin&amp;utm_campaign=career%20page" aria-disabled="false" class="sc-bdvvtL fFZSIZ sc-bdvvtL sc-gsDKAQ sc-egiyK sc-fbyfCU fqNvxS cYcZYW iNTHOa iXwlId sc-fezjOJ iwEhij"><div aria-hidden="true" class="sc-bdvvtL sc-gsDKAQ bOQZK WlUdp"><svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="none" viewBox="0 0 80 80" class="sc-jEieoE czssVL"><path fill="#4945FF" d="M0 27.7c0-13 0-19.6 4-23.6C8.2 0 14.8 0 27.8 0h24.6C65.4 0 72 0 76 4c4 4.2 4 10.8 4 23.8v24.6c0 13 0 19.6-4 23.6-4.2 4-10.8 4-23.8 4H27.7c-13 0-19.6 0-23.6-4C0 71.8 0 65.2 0 52.2V27.7Z"></path><path fill="#fff" fill-rule="evenodd" d="M55.2 24.3h-27V38H42v13.7h13.7V24.8c0-.3-.2-.5-.5-.5Z" clip-rule="evenodd"></path><path fill="#fff" d="M41.5 38h.5v.5h-.5z"></path><path fill="#9593FF" d="M28.3 38h13.2c.3 0 .5.2.5.5v13.2H28.8a.5.5 0 0 1-.5-.5V38ZM42 51.7h13.7L42.5 65c-.2.2-.5 0-.5-.2v-13ZM28.3 38H15.2a.3.3 0 0 1-.2-.5l13.3-13.2V38Z"></path></svg></div><span class="sc-dkPtRN cloSuT">Blog</span></a></div><div class="sc-bdvvtL sc-fXEqDS bOQZK imZNlA"><a target="_self" href="https://strapi.io/careers?utm_source=referral&amp;utm_medium=admin&amp;utm_campaign=blog" aria-disabled="false" class="sc-bdvvtL fFZSIZ sc-bdvvtL sc-gsDKAQ sc-egiyK sc-fbyfCU fqNvxS cYcZYW iNTHOa iXwlId sc-fezjOJ iwEhij"><div aria-hidden="true" class="sc-bdvvtL sc-gsDKAQ bOQZK WlUdp"><svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="none" viewBox="0 0 80 80" class="sc-jEieoE czssVL"><path fill="#4945FF" d="M0 27.7c0-13 0-19.6 4-23.6C8.2 0 14.8 0 27.8 0h24.6C65.4 0 72 0 76 4c4 4.2 4 10.8 4 23.8v24.6c0 13 0 19.6-4 23.6-4.2 4-10.8 4-23.8 4H27.7c-13 0-19.6 0-23.6-4C0 71.8 0 65.2 0 52.2V27.7Z"></path><path fill="#fff" fill-rule="evenodd" d="M55.2 24.3h-27V38H42v13.7h13.7V24.8c0-.3-.2-.5-.5-.5Z" clip-rule="evenodd"></path><path fill="#fff" d="M41.5 38h.5v.5h-.5z"></path><path fill="#9593FF" d="M28.3 38h13.2c.3 0 .5.2.5.5v13.2H28.8a.5.5 0 0 1-.5-.5V38ZM42 51.7h13.7L42.5 65c-.2.2-.5 0-.5-.2v-13ZM28.3 38H15.2a.3.3 0 0 1-.2-.5l13.3-13.2V38Z"></path></svg></div><span class="sc-dkPtRN cloSuT">We are hiring!</span></a></div><div class="sc-bdvvtL sc-fXEqDS bOQZK imZNlA"><a target="_self" href="https://discord.strapi.io/" aria-disabled="false" class="sc-bdvvtL fFZSIZ sc-bdvvtL sc-gsDKAQ sc-egiyK sc-fbyfCU fqNvxS cYcZYW iNTHOa iXwlId sc-fezjOJ iwEhij"><div aria-hidden="true" class="sc-bdvvtL sc-gsDKAQ bOQZK WlUdp"><svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="none" viewBox="0 0 80 80" class="sc-jEieoE czssVL"><path fill="#4945FF" d="M0 27.7c0-13 0-19.6 4-23.6C8.2 0 14.8 0 27.8 0h24.6C65.4 0 72 0 76 4c4 4.2 4 10.8 4 23.8v24.6c0 13 0 19.6-4 23.6-4.2 4-10.8 4-23.8 4H27.7c-13 0-19.6 0-23.6-4C0 71.8 0 65.2 0 52.2V27.7Z"></path><path fill="#fff" fill-rule="evenodd" d="M55.2 24.3h-27V38H42v13.7h13.7V24.8c0-.3-.2-.5-.5-.5Z" clip-rule="evenodd"></path><path fill="#fff" d="M41.5 38h.5v.5h-.5z"></path><path fill="#9593FF" d="M28.3 38h13.2c.3 0 .5.2.5.5v13.2H28.8a.5.5 0 0 1-.5-.5V38ZM42 51.7h13.7L42.5 65c-.2.2-.5 0-.5-.2v-13ZM28.3 38H15.2a.3.3 0 0 1-.2-.5l13.3-13.2V38Z"></path></svg></div><span class="sc-dkPtRN cloSuT">Get help</span></a></div></div></aside></div></div></div></main></div></div><aside class="sc-bdvvtL iYutMo"><button aria-disabled="false" type="button" aria-label="Help button" class="sc-bdvvtL sc-gsDKAQ sc-egiyK iAycJB kpZefO iNTHOa sc-ksdxgE iTNHry sc-fZzbTk kBdWUu"><span class="sc-dkPtRN GUInE"><svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="none" viewBox="0 0 15 14" class="sc-bdvvtL sc-gGCDDS hOuGnF jrmaSS"><path fill="#212134" d="M5.08 4.1c0-1.19 1.18-2.17 2.42-2.17s2.43.98 2.43 2.17c0 1.1-.56 1.61-1.31 2.28l-.03.03c-.75.65-1.66 1.47-1.66 3.09a.57.57 0 1 0 1.15 0c0-1.08.55-1.6 1.3-2.26l.02-.02c.75-.66 1.67-1.48 1.67-3.12C11.07 2.13 9.22.78 7.5.78 5.78.78 3.93 2.13 3.93 4.1a.57.57 0 1 0 1.15 0Zm2.42 9.26a.88.88 0 1 0 0-1.75.88.88 0 0 0 0 1.75Z"></path></svg></span></button></aside></div></div></div><div class="sc-iCfMLu gejpLQ"><p role="log" aria-live="polite" id="live-region-log" aria-relevant="all"></p><p role="status" aria-live="polite" id="live-region-status" aria-relevant="all"></p><p role="alert" aria-live="assertive" id="live-region-alert" aria-relevant="all"></p></div></div><noscript><div class="strapi--root"><div class="strapi--no-js"><style>.strapi--root {
+              position: absolute;
+              top: 0;
+              right: 0;
+              left: 0;
+              bottom: 0;
+              background: #fff;
+            }
+
+            .strapi--no-js {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              text-align: center;
+              font-family: helvetica, arial, sans-serif;
+            }</style><h1>JavaScript disabled</h1><p>Please <a href="https://www.enable-javascript.com/">enable JavaScript</a> in your browser and reload the page to proceed.</p></div></div></noscript><div id="forest-ext-shadow-host"><template shadowrootmode="open"><head></head><div id="root"></div></template></div></body><vmaker-container style="position: fixed; top: 0px; right: 0px; z-index: 99999999; width: 100%; height: 100%; pointer-events: none; user-select: none;"><template shadowrootmode="open"><vm-container id="vmaker-extension-root" data-color-mode="light" data-light-theme="light" style="display: none; margin-left: auto;"></vm-container><div></div></template><style>
+          @font-face {
+            font-family: 'VM-Poppins';
+            src: url(chrome-extension://bjibimlhliikdlklncdgkpdmgkpieplj/static/media/Poppins-Light.ttf) format('truetype');
+            font-weight: 300;
+            font-style: normal;
+            font-display: swap;
+          }
+          @font-face {
+            font-family: 'VM-Poppins';
+            src: url(chrome-extension://bjibimlhliikdlklncdgkpdmgkpieplj/static/media/Poppins-Regular.ttf) format('truetype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+          }
+          @font-face {
+            font-family: 'VM-Poppins';
+            src: url(chrome-extension://bjibimlhliikdlklncdgkpdmgkpieplj/static/media/Poppins-Medium.ttf) format('truetype');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+          }
+          @font-face {
+            font-family: 'VM-Poppins';
+            src: url(chrome-extension://bjibimlhliikdlklncdgkpdmgkpieplj/static/media/Poppins-SemiBold.ttf) format('truetype');
+            font-weight: 600;
+            font-style: normal;
+            font-display: swap;
+          }
+          @font-face {
+            font-family: 'VM-Poppins';
+            src: url(chrome-extension://bjibimlhliikdlklncdgkpdmgkpieplj/static/media/Poppins-Bold.ttf) format('truetype');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+          }
+          @font-face {
+            font-family: 'VM-Allerta';
+            src: url(chrome-extension://bjibimlhliikdlklncdgkpdmgkpieplj/static/media/Allerta-Regular.ttf) format('truetype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: auto;
+          }
+          @font-face {
+            font-family: 'VM-Charmonman';
+            src: url(chrome-extension://bjibimlhliikdlklncdgkpdmgkpieplj/static/media/Charmonman-Regular.ttf) format('truetype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: auto;
+          }
+          @font-face {
+            font-family: 'VM-Comic Neue';
+            src: url(chrome-extension://bjibimlhliikdlklncdgkpdmgkpieplj/static/media/ComicNeue-Regular.ttf) format('truetype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: auto;
+          }
+          @font-face {
+            font-family: 'VM-Open Sans';
+            src: url(chrome-extension://bjibimlhliikdlklncdgkpdmgkpieplj/static/media/OpenSans-Regular.ttf) format('truetype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: auto;
+          }
+          @font-face {
+            font-family: 'VM-Poiret One';
+            src: url(chrome-extension://bjibimlhliikdlklncdgkpdmgkpieplj/static/media/PoiretOne-Regular.ttf) format('truetype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: auto;
+          }
+          @font-face {
+            font-family: 'VM-Signpainter';
+            src: url(chrome-extension://bjibimlhliikdlklncdgkpdmgkpieplj/static/media/Sign-Painter-Regular.ttf) format('truetype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: auto;
+          }
+          @font-face {
+            font-family: 'VM-Futura';
+            src: url(chrome-extension://bjibimlhliikdlklncdgkpdmgkpieplj/static/media/Futura-Light-font.ttf) format('truetype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: auto;
+          }
+          @font-face {
+            font-family: 'VM-Barlow';
+            src: url(chrome-extension://bjibimlhliikdlklncdgkpdmgkpieplj/static/media/Barlow-Regular.ttf) format('truetype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: auto;
+          }
+          @font-face {
+            font-family: 'VM-Norwester';
+            src: url(chrome-extension://bjibimlhliikdlklncdgkpdmgkpieplj/static/media/norwester.ttf) format('truetype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: auto;
+          }
+          @font-face {
+            font-family: 'VM-Europa';
+            src: url(chrome-extension://bjibimlhliikdlklncdgkpdmgkpieplj/static/media/europa.ttf) format('truetype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: auto;
+          }
+        </style></vmaker-container></html>

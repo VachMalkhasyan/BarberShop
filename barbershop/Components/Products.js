@@ -1,101 +1,136 @@
-
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView, Dimensions, Modal } from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
+import { addToCart } from '../Redux/Actions/CartActions';
 import { Ionicons } from '@expo/vector-icons';
-import SearchInput from  '../Utils/SearchInput.js';
+import SearchInput from '../Utils/SearchInput.js';
 import { Card, Button, Icon } from '@rneui/themed';
+import { useNavigation } from '@react-navigation/native';
 
+const screenWidth = Dimensions.get('window').width;
 
 const products = [
-  { id: 1, name: 'Shaver', price: '$20', image: require('../assets/product1.png') },
-  { id: 2, name: 'Hair Gel', price: '$10', image: require('../assets/product2.png') },
-  { id: 3, name: 'Shampoo', price: '$15', image: require('../assets/product3.png') },
-  { id: 4, name: 'Hair Dryer', price: '$30', image: require('../assets/product4.png') },
+  { id: 1, name: 'Shaver', price: '$20', image: require('../assets/product1.png'), description: 'This is a shaver.' },
+  { id: 2, name: 'Hair Gel', price: '$10', image: require('../assets/product2.png'), description: 'This is a hair gel.' },
+  { id: 3, name: 'Shampoo', price: '$15', image: require('../assets/product3.png'), description: 'This is a shampoo.' },
+  { id: 4, name: 'Hair Dryer', price: '$30', image: require('../assets/product4.png'), description: 'This is a hair dryer.' },
 ];
 
 const Products = () => {
+  const navigation = useNavigation();
+
+  const handleProductPressToDetails = (product) => {
+    navigation.navigate('ProductDetails', { product });
+  };
+
+  const dispatch = useDispatch();
+  const [modalVisible, setModalVisible] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
   const handleBuy = (product) => {
-    // Logic for buying the product
-    console.log(`Buying ${product.name}`);
+    dispatch(addToCart(product));
+  };
+
+  const handleProductPress = (product) => {
+    setSelectedProduct(product);
+    setModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
   };
 
   const [searchText, setSearchText] = useState('');
 
-    const handleSearchChange = text => {
-      setSearchText(text);
-      // You can add additional logic here, such as filtering data based on the search text
-    };
+  const handleSearchChange = text => {
+    setSearchText(text);
+    // You can add additional logic here, such as filtering data based on the search text
+  };
 
   return (
     <>
+      <ScrollView>
+        <Text style={styles.productsName}> Barber Shop Products </Text>
+        <SearchInput
+          placeholder="Search..."
+          onChangeText={handleSearchChange}
+          value={searchText}
+        />
+        <View style={styles.container}>
+          {products.map((product, index) => (
+            <TouchableOpacity key={product.id} style={index % 2 === 0 ? styles.productItem : [styles.productItem, { marginLeft: screenWidth * 0.05 }]} onPress={() => handleProductPressToDetails(product)}>
+              <Card>
+                <Card.Divider />
+                <Card.Image
+                  style={{ padding: 0 }}
+                  source={product.image}
+                />
+                <Text style={styles.productName}>{product.name}</Text>
+                <Text style={styles.productPrice}>{product.price}</Text>
+                <TouchableOpacity style={styles.buyButton} onPress={() => handleBuy(product)}>
+                  <Ionicons name="cart" size={20} color="white" />
+                  <Text style={styles.buyButtonText}>Buy</Text>
+                </TouchableOpacity>
+              </Card>
+            </TouchableOpacity>
+          ))}
+        </View>
+      </ScrollView>
 
-      <Text style={styles.productsName}> Barber Shop Products </Text>
-      <SearchInput
-                  placeholder="Search..."
-                  onChangeText={handleSearchChange}
-                  value={searchText}
-      />
-      <View style={styles.container}>
-        {products.map(product => (
-        <Card key={product.image}>
-                  <Card.Divider />
-                  <Card.Image
-                    style={{ padding: 0 }}
-                    source={product.image}
-                  />
-                  <Text style={styles.productName}>{product.name}</Text>
-                  <Text style={styles.productPrice}>{product.price}</Text>
-                  <TouchableOpacity style={styles.buyButton} onPress={() => handleBuy(product)}>
-                    <Ionicons name="cart" size={20} color="white" />
-                    <Text style={styles.buyButtonText}>Buy</Text>
-                  </TouchableOpacity>
-                </Card>
-        ))}
-      </View>
+      {/* Modal for showing product details */}
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={closeModal}
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Text style={styles.modalProductName}>{selectedProduct?.name}</Text>
+            <Text style={styles.modalProductDescription}>{selectedProduct?.description}</Text>
+            <TouchableOpacity style={styles.modalBuyButton} onPress={() => handleBuy(selectedProduct)}>
+              <Ionicons name="cart" size={20} color="white" />
+              <Text style={styles.modalBuyButtonText}>Buy</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.closeButton} onPress={closeModal}>
+              <Text style={styles.closeButtonText}>Close</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
     </>
   );
 };
 
 const styles = StyleSheet.create({
   productsName: {
-    textAlign: 'left',
+    textAlign: 'center',
     margin: 10,
     fontSize: 20,
     fontWeight: 'bold',
   },
   container: {
-    flex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
-    alignItems: 'flex-start',
     padding: 8,
     backgroundColor: '#fff',
-
   },
   productItem: {
-    width: '40%', // Adjust width as needed
-    margin: 15,
-    alignItems: 'center',
-    borderWidth: 1,
-    borderColor: "#20232a",
-    padding: 10
-  },
-  productImage: {
-    width: 150,
-    height: 150,
-    borderRadius: 15,
-    padding: 20
+    width: '45%', // Adjust width as needed
+    marginBottom: 20,
   },
   productName: {
     marginTop: 10,
     fontSize: 16,
     fontWeight: 'bold',
+    textAlign: 'center',
   },
   productPrice: {
     fontSize: 14,
     color: 'green',
     marginTop: 5,
+    textAlign: 'center',
   },
   buyButton: {
     backgroundColor: 'blue',
@@ -111,6 +146,53 @@ const styles = StyleSheet.create({
   buyButtonText: {
     color: 'white',
     marginLeft: 5,
+    textAlign: 'center',
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  modalContent: {
+    backgroundColor: '#fff',
+    padding: 20,
+    borderRadius: 10,
+    width: '80%',
+  },
+  modalProductName: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  modalProductDescription: {
+    fontSize: 16,
+    marginTop: 10,
+    marginBottom: 20,
+    textAlign: 'center',
+  },
+  modalBuyButton: {
+    backgroundColor: 'blue',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+    alignSelf: 'center',
+  },
+  modalBuyButtonText: {
+    color: 'white',
+    marginLeft: 5,
+    textAlign: 'center',
+  },
+  closeButton: {
+    alignSelf: 'flex-end',
+    marginTop: 10,
+  },
+  closeButtonText: {
+    color: 'blue',
+    fontSize: 16,
   },
 });
 

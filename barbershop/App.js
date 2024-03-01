@@ -5,6 +5,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StyleSheet, ScrollView, View } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import 'react-native-gesture-handler';
+import { Provider } from 'react-redux';
+
 
 import Header from './Components/Header';
 import Footer from './Components/Footer';
@@ -14,12 +16,16 @@ import Settings from './Components/Settings'
 import Booking from './Components/Booking'
 import Swiper from './Utils/SwiperComponent'
 import Schedule from './Components/Schedule'
+import Cart from './Components/Cart'
+import ProductDetails from './Components/ProductDetails'
 
+import store from './Redux/Store'
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
+  <Provider store={store}>
      <NavigationContainer>
           <Tab.Navigator
           screenOptions={({ route }) => ({
@@ -50,22 +56,30 @@ export default function App() {
             <Tab.Screen name="Booking" component={Booking} />
             <Tab.Screen name="ProfilePage" component={ProfilePage} />
             <Tab.Screen name="Settings" component={Settings} />
+            <Stack.Screen name="Cart" component={Cart} options={{ headerShown: false }} />
+            <Stack.Screen name="ProductDetails" component={ProductDetails} options={{ headerShown: false }} />
+
+
           </Tab.Navigator>
         </NavigationContainer>
+                 </Provider>
   );
 }
 
 const HomeScreen = () => {
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Header />
-      <Schedule />
-      <View style={styles.content}>
-        <Products />
-      </View>
-      <SwiperComponent />
-      <Footer />
-    </ScrollView>
+    <Provider store={store}>
+        <ScrollView contentContainerStyle={styles.container}>
+              <Header />
+              <Schedule />
+               <View style={styles.content}>
+                   <Products />
+               </View>
+              <SwiperComponent />
+              <Footer />
+        </ScrollView>
+    </Provider>
+
   );
 };
 

@@ -7,8 +7,11 @@ const Header = () => {
   const navigation = useNavigation();
 
   const handleProfilePress = () => {
-    navigation.navigate('ProfilePage'); // Navigate to Profile page
+    navigation.navigate('ProfilePage');
   };
+   const handleCartPress = () => {
+      navigation.navigate('Cart');
+    };
 
   return (
     <>
@@ -16,7 +19,7 @@ const Header = () => {
                   <TouchableOpacity style={styles.right} onPress={handleProfilePress}>
                           <Ionicons  style={styles.right} name="person-circle" size={30} color="black" />
                   </TouchableOpacity>
-                  <TouchableOpacity style={styles.right} onPress={handleProfilePress}>
+                  <TouchableOpacity style={styles.right} onPress={handleCartPress}>
                           <Ionicons  style={styles.right} name="basket-outline" size={30} color="black" />
                   </TouchableOpacity>
               </View>

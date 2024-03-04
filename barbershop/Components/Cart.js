@@ -18,10 +18,10 @@ const navigation = useNavigation();
   const products = useSelector((state) => state.cart.cartItems);
   const dispatch = useDispatch();
 
-  const handleBuy = (product) => {
-    dispatch(addToCart(product));
-    console.log(products,'productsstate')
-  };
+//  const handleBuy = (product) => {
+//    dispatch(addToCart(product));
+//    console.log(products,'productsstate')
+//  };
 
   return (
         <ScrollView>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView, Dimensions, Modal } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView, Dimensions, Modal, TextInput } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { addToCart } from '../Redux/Actions/CartActions';
 import { Ionicons } from '@expo/vector-icons';
@@ -39,43 +39,46 @@ const Products = () => {
   const closeModal = () => {
     setModalVisible(false);
   };
+ const [searchText, setSearchText] = useState('');
 
-  const [searchText, setSearchText] = useState('');
-
-  const handleSearchChange = text => {
+  const handleSearchChange = (text) => {
     setSearchText(text);
-    // You can add additional logic here, such as filtering data based on the search text
   };
 
+  // Filter products based on search text
+  const filteredProducts = products.filter(product =>
+    product.name.toLowerCase().includes(searchText.toLowerCase())
+  );
   return (
     <>
-      <ScrollView>
-        <Text style={styles.productsName}> Barber Shop Products </Text>
-        <SearchInput
-          placeholder="Search..."
-          onChangeText={handleSearchChange}
-          value={searchText}
-        />
-        <View style={styles.container}>
-          {products.map((product, index) => (
-            <TouchableOpacity key={product.id} style={index % 2 === 0 ? styles.productItem : [styles.productItem, { marginLeft: screenWidth * 0.05 }]} onPress={() => handleProductPressToDetails(product)}>
-              <Card>
-                <Card.Divider />
-                <Card.Image
-                  style={{ padding: 0 }}
-                  source={product.image}
-                />
-                <Text style={styles.productName}>{product.name}</Text>
-                <Text style={styles.productPrice}>{product.price}</Text>
-                <TouchableOpacity style={styles.buyButton} onPress={() => handleBuy(product)}>
-                  <Ionicons name="cart" size={20} color="white" />
-                  <Text style={styles.buyButtonText}>Buy</Text>
+          <ScrollView>
+            <Text style={styles.productsName}>Barber Shop Products</Text>
+            <TextInput
+              style={styles.searchInput}
+              placeholder="Search..."
+              onChangeText={handleSearchChange}
+              value={searchText}
+            />
+            <View style={styles.container}>
+              {filteredProducts.map((product, index) => (
+                <TouchableOpacity key={product.id} style={index % 2 === 0 ? styles.productItem : [styles.productItem, { marginLeft: screenWidth * 0.05 }]} onPress={() => handleProductPress(product)}>
+                  <Card>
+                    <Card.Divider />
+                    <Card.Image
+                      style={{ padding: 0 }}
+                      source={product.image}
+                    />
+                    <Text style={styles.productName}>{product.name}</Text>
+                    <Text style={styles.productPrice}>{product.price}</Text>
+                    <TouchableOpacity style={styles.buyButton} onPress={() => handleBuy(product)}>
+                      <Ionicons name="cart" size={20} color="white" />
+                      <Text style={styles.buyButtonText}>Buy</Text>
+                    </TouchableOpacity>
+                  </Card>
                 </TouchableOpacity>
-              </Card>
-            </TouchableOpacity>
-          ))}
-        </View>
-      </ScrollView>
+              ))}
+            </View>
+          </ScrollView>
 
       {/* Modal for showing product details */}
       <Modal
@@ -117,23 +120,24 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   productItem: {
-    width: '45%', // Adjust width as needed
+    width: 150, // Adjust width as needed
     marginBottom: 20,
   },
   productName: {
-    marginTop: 10,
+    marginTop: 14,
     fontSize: 16,
     fontWeight: 'bold',
-    textAlign: 'center',
+    textAlign: 'left',
   },
   productPrice: {
-    fontSize: 14,
-    color: 'green',
+    fontSize: 18,
+    color: '#0A1551',
     marginTop: 5,
-    textAlign: 'center',
+    textAlign: 'left',
+    fontWeight: '700'
   },
   buyButton: {
-    backgroundColor: 'blue',
+    backgroundColor: '#0A1551',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
